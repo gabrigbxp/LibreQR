@@ -1,0 +1,73 @@
+{
+    "name": "freeqr",
+    "productName": "freeqr",
+    "version": "0.1.0",
+    "description": "Free QR code creation software, no more unnecessary paywalls or other weird stuff",
+    "main": ".webpack/main",
+    "scripts": {
+        "start": "electron-forge start",
+        "package": "electron-forge package",
+        "make": "electron-forge make",
+        "publish": "electron-forge publish",
+        "lint": "eslint --ext .ts,.tsx .",
+        "prepare": "husky",
+        "postinstall": "node setupHusky.js"
+    },
+    "devDependencies": {
+        "@electron-forge/cli": "^7.4.0",
+        "@electron-forge/maker-deb": "^7.4.0",
+        "@electron-forge/maker-rpm": "^7.4.0",
+        "@electron-forge/maker-squirrel": "^7.4.0",
+        "@electron-forge/maker-zip": "^7.4.0",
+        "@electron-forge/plugin-auto-unpack-natives": "^7.4.0",
+        "@electron-forge/plugin-fuses": "^7.4.0",
+        "@electron-forge/plugin-webpack": "^7.4.0",
+        "@electron/fuses": "^1.8.0",
+        "@types/qrcode": "^1.5.5",
+        "@types/react": "^18.3.4",
+        "@types/react-dom": "^18.3.0",
+        "@typescript-eslint/eslint-plugin": "^5.62.0",
+        "@typescript-eslint/parser": "^5.62.0",
+        "@vercel/webpack-asset-relocator-loader": "^1.7.3",
+        "css-loader": "^6.11.0",
+        "electron": "32.0.1",
+        "eslint": "^8.57.0",
+        "eslint-config-prettier": "^9.1.0",
+        "eslint-import-resolver-typescript": "^3.6.3",
+        "eslint-plugin-import": "^2.29.1",
+        "fork-ts-checker-webpack-plugin": "^7.3.0",
+        "husky": "^9.1.5",
+        "lint-staged": "^15.2.9",
+        "node-loader": "^2.0.0",
+        "prettier": "3.3.3",
+        "sass": "^1.77.8",
+        "sass-loader": "^16.0.1",
+        "style-loader": "^3.3.4",
+        "ts-loader": "^9.5.1",
+        "ts-node": "^10.9.2",
+        "typescript": "~4.5.4"
+    },
+    "keywords": [
+        "qr",
+        "free",
+        "react",
+        "electron"
+    ],
+    "author": "Gabriel Scocozza",
+    "license": "MIT",
+    "dependencies": {
+        "@emotion/react": "^11.13.3",
+        "@emotion/styled": "^11.13.0",
+        "@fontsource/roboto": "^5.0.14",
+        "@mui/icons-material": "^5.16.7",
+        "@mui/material": "^5.16.7",
+        "electron-squirrel-startup": "^1.0.1",
+        "jimp": "^0.22.12",
+        "qrcode": "^1.5.4",
+        "react": "^18.3.1",
+        "react-dom": "^18.3.1"
+    },
+    "lint-staged": {
+        "**/*": "prettier --write --ignore-unknown"
+    }
+}
