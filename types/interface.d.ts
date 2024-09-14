@@ -1,6 +1,10 @@
-import type { QRCodeSegment } from "qrcode"
+import { SaveDialogReturnValue } from "electron"
 
 type QRTextInfo = {
+    /**
+     * Full path to file
+     */
+    fileName: string
     /**
      * QR content
      */
@@ -34,10 +38,12 @@ type QRPreviewInfo = {
 
 export type CreateQRText = (info: QRTextInfo) => void
 export type PreviewQRText = (info: QRPreviewInfo) => Promise<string>
+export type SaveDialog = (fileName: string) => Promise<SaveDialogReturnValue>
 
 export interface IAPI {
     createQRText: CreateQRText
     previewQRText: PreviewQRText
+    saveDialog: SaveDialog
 }
 
 export type BorderRadius =

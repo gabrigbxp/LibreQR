@@ -1,11 +1,11 @@
-import { ipcMain } from "electron"
+import { dialog, ipcMain } from "electron"
 import { createQRText, previewQRText } from "./qr"
 import type { QRPreviewInfo, QRTextInfo } from "types/interface"
 
-ipcMain.handle("generate-qr", (_event, info: QRTextInfo) =>
+ipcMain.handle("qr:generate", (_event, info: QRTextInfo) =>
     createQRText(
         {
-            path: "qrcode.png",
+            path: info.fileName,
             text: info.text,
             options: {
                 errorCorrectionLevel: "H",
@@ -18,4 +18,13 @@ ipcMain.handle("generate-qr", (_event, info: QRTextInfo) =>
     )
 )
 
-ipcMain.handle("preview-qr", (_event, info: QRPreviewInfo) => previewQRText(info))
+ipcMain.handle("qr:preview", (_event, info: QRPreviewInfo) => previewQRText(info))
+
+ipcMain.handle("dialog:save-file", async (_event, fileName: string) => {
+    const result = await dialog.showSaveDialog({
+        title: "Guardar imagen",
+        defaultPath: fileName,
+        filters: [{ name: "Imágenes", extensions: ["png"] }],
+    })
+    return result
+})

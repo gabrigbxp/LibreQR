@@ -38,6 +38,7 @@ const roundCorners = (img: Jimp, borderRadius: BorderRadius): void => {
 }
 
 type onErrorType = (reason?: unknown) => void
+
 interface QRTextType {
     path: string
     text: string | QRCodeSegment[]

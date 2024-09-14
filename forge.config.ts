@@ -20,9 +20,16 @@ const config: ForgeConfig = {
     plugins: [
         new AutoUnpackNativesPlugin({}),
         new WebpackPlugin({
+            devServer: {
+                hot: true,
+                liveReload: false,
+            },
             mainConfig,
             renderer: {
-                config: rendererConfig,
+                config: {
+                    ...rendererConfig,
+                    devServer: { hot: true, liveReload: false },
+                },
                 entryPoints: [
                     {
                         html: "./src/index.html",

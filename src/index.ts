@@ -25,9 +25,10 @@ const createWindow = (): void => {
     // and load the index.html of the app.
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
     mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY)
-
-    // Open the DevTools.
-    mainWindow.webContents.openDevTools()
+    if (process.env.NODE_ENV === "development") {
+        // Open the DevTools.
+        mainWindow.webContents.openDevTools()
+    }
 }
 
 // This method will be called when Electron has finished
