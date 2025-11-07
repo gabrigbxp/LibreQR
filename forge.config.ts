@@ -15,14 +15,23 @@ import { rendererConfig } from "./webpack.renderer.config"
 const config: ForgeConfig = {
     packagerConfig: {
         asar: true,
+        executableName: "libreqr",
     },
     rebuildConfig: {},
     makers: [
         new MakerSquirrel({}), // .exe
         new MakerZIP({}, ["win32"]), // .zip
         new MakerZIP({}, ["darwin"]), // macOS .zip
-        new MakerDeb({}),
-        new MakerRpm({}),
+        new MakerDeb({
+            options: {
+                bin: "libreqr",
+            },
+        }),
+        new MakerRpm({
+            options: {
+                bin: "libreqr",
+            },
+        }),
     ],
     publishers: [
         new PublisherGithub({
