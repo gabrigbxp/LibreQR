@@ -53,6 +53,7 @@
         "postinstall": "node setupHusky.js",
         "preweb": "ts-node env.ts",
         "web": "webpack serve --config webpack.web.config.js --mode development",
+        "preweb:build": "cross-env NODE_ENV=production ts-node env.ts",
         "web:build": "webpack --config webpack.web.config.js --mode production",
         "web:preview": "npx serve dist-web"
     },
