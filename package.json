@@ -46,6 +46,7 @@
         "package": "cross-env NODE_ENV=production electron-forge package",
         "premake": "cross-env NODE_ENV=production ts-node env.ts",
         "make": "cross-env NODE_ENV=production electron-forge make",
+        "prepublish": "cross-env NODE_ENV=production ts-node env.ts",
         "publish": "electron-forge publish",
         "lint": "eslint --ext .ts,.tsx .",
         "format": "prettier --write src/**/*.{ts,tsx,json}",
