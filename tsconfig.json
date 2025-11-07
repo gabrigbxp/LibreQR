@@ -13,7 +13,8 @@
         "resolveJsonModule": true,
         "paths": {
             "@types/*": ["types/*"],
-            "@ui/*": ["src/ui/*"]
+            "@ui/*": ["src/ui/*"],
+            "@utils/*": ["src/utils/*"]
         },
         "jsx": "react-jsx",
         "allowSyntheticDefaultImports": true,

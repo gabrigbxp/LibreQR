@@ -1,0 +1,53 @@
+{
+    "short_name": "LibreQR",
+    "name": "LibreQR - 100% Free QR Code Generator",
+    "description": "Generate QR codes for free without intermediaries, ads, or restrictions. Create WiFi, contact cards, calendar events, URLs, and more. Open source and privacy-focused.",
+    "categories": ["productivity", "utilities", "business"],
+    "lang": "en",
+    "dir": "ltr",
+    "icons": [
+        {
+            "src": "favicon.ico",
+            "sizes": "64x64 32x32 24x24 16x16",
+            "type": "image/x-icon",
+            "purpose": "any"
+        }
+    ],
+    "start_url": "./",
+    "scope": "./",
+    "display": "standalone",
+    "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
+    "theme_color": "#1976d2",
+    "background_color": "#ffffff",
+    "orientation": "portrait-primary",
+    "prefer_related_applications": false,
+    "edge_side_panel": {
+        "preferred_width": 400
+    },
+    "shortcuts": [
+        {
+            "name": "WiFi QR Code",
+            "short_name": "WiFi QR",
+            "description": "Generate WiFi QR codes",
+            "url": "./?type=wifi",
+            "icons": [
+                {
+                    "src": "favicon.ico",
+                    "sizes": "32x32"
+                }
+            ]
+        },
+        {
+            "name": "Contact Card QR",
+            "short_name": "Contact QR",
+            "description": "Generate contact card QR codes",
+            "url": "./?type=vcard",
+            "icons": [
+                {
+                    "src": "favicon.ico",
+                    "sizes": "32x32"
+                }
+            ]
+        }
+    ]
+}

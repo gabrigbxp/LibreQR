@@ -1,3 +1,4 @@
+import { CommonState } from "@ui/store/slices/commonSlice"
 import { SaveDialogReturnValue } from "electron"
 
 type QRTextInfo = {
@@ -23,6 +24,25 @@ type QRTextInfo = {
          */
         radius: number
     }
+    /**
+     * Margin around QR code
+     */
+    margin?: number
+    /**
+     * Dark color (modules)
+     */
+    moduleColor?: string
+    /**
+     * Light color (background)
+     */
+    backgroudnColor?: string
+    /**
+     * Advanced QR parameters
+     */
+    maskPattern?: number
+    version?: number
+    scale?: number
+    errorCorrectionLevel?: CommonState["errorCorrectionLevel"]
 }
 
 type QRPreviewInfo = {
@@ -34,15 +54,34 @@ type QRPreviewInfo = {
      * size of qr on pixels
      */
     size: number
+    /**
+     * Margin around QR code
+     */
+    margin?: number
+    /**
+     * Dark color (modules)
+     */
+    moduleColor?: string
+    /**
+     * Light color (background)
+     */
+    backgroudnColor?: string
+    /**
+     * Advanced QR parameters
+     */
+    maskPattern?: number
+    version?: number
+    scale?: number
+    errorCorrectionLevel?: CommonState["errorCorrectionLevel"]
 }
 
-export type CreateQRText = (info: QRTextInfo) => void
-export type PreviewQRText = (info: QRPreviewInfo) => Promise<string>
+export type CreateFile = (info: QRTextInfo) => void
+export type Preview = (info: QRPreviewInfo) => Promise<string>
 export type SaveDialog = (fileName: string) => Promise<SaveDialogReturnValue>
 
 export interface IAPI {
-    createQRText: CreateQRText
-    previewQRText: PreviewQRText
+    createFile: CreateFile
+    preview: Preview
     saveDialog: SaveDialog
 }
 
@@ -58,5 +97,6 @@ export type BorderRadius =
 declare global {
     interface Window {
         API: IAPI
+        __LIBREQR_ENV__: "web" | "electron"
     }
 }

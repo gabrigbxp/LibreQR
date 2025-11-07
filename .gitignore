@@ -90,4 +90,9 @@ jspm_packages/
 out/
 
 .husky
-*.png
+
+# Ignore generated QR code images, but not public assets
+src/**/*.png
+dist-web/**/*.png
+
+dist-web

@@ -28,4 +28,7 @@
 
 import "./index.css"
 
+// Set environment for Electron
+window.__LIBREQR_ENV__ = "electron"
+
 import "./ui/app"
