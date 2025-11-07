@@ -3,6 +3,7 @@ const path = require("path")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin")
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin")
+const CopyWebpackPlugin = require("copy-webpack-plugin")
 
 module.exports = (_env, argv) => {
     const isDevelopment = argv.mode !== "production"
@@ -74,6 +75,17 @@ module.exports = (_env, argv) => {
                 templateParameters: {
                     BASE_URL: baseUrl,
                 },
+            }),
+            new CopyWebpackPlugin({
+                patterns: [
+                    {
+                        from: path.resolve(__dirname, "public"),
+                        to: path.resolve(__dirname, "dist-web"),
+                        globOptions: {
+                            ignore: ["**/index.html"], // evita copiar index.html si ya lo manejás con HtmlWebpackPlugin
+                        },
+                    },
+                ],
             }),
             new ForkTsCheckerWebpackPlugin(),
             isDevelopment && new ReactRefreshWebpackPlugin(),
