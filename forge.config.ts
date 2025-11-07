@@ -16,6 +16,7 @@ const config: ForgeConfig = {
     packagerConfig: {
         asar: true,
         executableName: "libreqr",
+        icon: "./build/icon", // Electron agregará .ico/.png/.icns automáticamente
     },
     rebuildConfig: {},
     makers: [
