@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
 export interface GeoState {
-    latitude: number
-    longitude: number
+    latitude?: number
+    longitude?: number
     altitude?: number
     label?: string
 }

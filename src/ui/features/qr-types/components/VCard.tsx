@@ -1,7 +1,7 @@
 import { ChangeEvent, useEffect } from "react"
 import Box from "@mui/material/Box"
 import Divider from "@mui/material/Divider"
-import Grid from "@mui/material/Grid2"
+import Grid from "@mui/material/Grid"
 import TextField from "@mui/material/TextField"
 import Typography from "@mui/material/Typography"
 
@@ -81,13 +81,14 @@ const VCard = ({ firstName, lastName, organization, title, phone, email, website
                 <Typography variant="h6" gutterBottom>
                     {t("qrTypes.vcard.title")}
                 </Typography>
-                <Typography variant="body2" color="textSecondary" paragraph>
+                <Typography variant="body2" color="textSecondary" sx={{ marginBottom: 2 }}>
+                    {/* sx={{ marginBottom: '16px' }} */}
                     {t("qrTypes.vcard.description")}
                 </Typography>
                 <Divider sx={{ mb: 2 }} />
             </Grid>
-            <Box gap={2} display="flex" flexWrap="wrap">
-                <Grid size={12} gap={2} display="flex" flexWrap="wrap" alignItems="flex-end">
+            <Box sx={{ gap: 2, display: "flex", flexWrap: "wrap" }}>
+                <Grid size={12} sx={{ gap: 2, display: "flex", flexWrap: "wrap", alignItems: "flex-end" }}>
                     <Grid size={{ xs: 12, sm: 6 }}>
                         <Typography variant="subtitle1" gutterBottom>
                             {t("qrTypes.vcard.personalInfo")}
@@ -104,7 +105,7 @@ const VCard = ({ firstName, lastName, organization, title, phone, email, website
                 <Grid size={{ xs: 12, sm: 6 }}>
                     <TextField label={t("qrTypes.vcard.position")} variant="outlined" size="small" value={title} onChange={handleChange("title")} fullWidth />
                 </Grid>
-                <Grid size={12} gap={2} display="flex" flexWrap="wrap" alignItems="flex-end">
+                <Grid size={12} sx={{ gap: 2, display: "flex", flexWrap: "wrap", alignItems: "flex-end" }}>
                     <Grid size={{ xs: 12, sm: 6 }}>
                         <Typography variant="subtitle1" gutterBottom>
                             {t("qrTypes.vcard.contactInfo")}

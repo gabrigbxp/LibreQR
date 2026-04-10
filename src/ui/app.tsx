@@ -40,5 +40,6 @@ const App = () => {
     )
 }
 
-const root = createRoot(document.querySelector("#root"))
+// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+const root = createRoot(document.querySelector("#root")!)
 root.render(App())

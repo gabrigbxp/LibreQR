@@ -1,5 +1,5 @@
 import { ChangeEvent } from "react"
-import Grid from "@mui/material/Grid2"
+import Grid from "@mui/material/Grid"
 import TextField from "@mui/material/TextField"
 
 import QRWorkspace from "@ui/components/layout/QRWorkspace"

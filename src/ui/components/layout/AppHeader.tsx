@@ -48,7 +48,7 @@ const AppHeader = () => (
                     LibreQR
                 </Typography>
             </Box>
-            <Stack direction="row" spacing={{ xs: 0.5, sm: 1 }} alignItems="center">
+            <Stack direction="row" spacing={{ xs: 0.5, sm: 1 }} sx={{ alignItems: "center" }}>
                 <Tooltip title="GitHub Repository">
                     <IconButton component="a" href="https://github.com/gabrigbxp/LibreQR" target="_blank" rel="noopener noreferrer" color="inherit" size="small">
                         <GitHubIcon />

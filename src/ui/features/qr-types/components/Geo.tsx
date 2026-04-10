@@ -3,7 +3,7 @@ import { ChangeEvent, useEffect } from "react"
 import Box from "@mui/material/Box"
 import Button from "@mui/material/Button"
 import Divider from "@mui/material/Divider"
-import Grid from "@mui/material/Grid2"
+import Grid from "@mui/material/Grid"
 import TextField from "@mui/material/TextField"
 import Typography from "@mui/material/Typography"
 
@@ -87,7 +87,7 @@ const Geo = ({ latitude, longitude, altitude, label, actions }: GeoProps) => {
                     {t("qrTypes.geo.useCurrentLocation")}
                 </Button>
             </Grid>
-            <Box gap={2} display="flex" flexWrap="wrap">
+            <Box sx={{ gap: 2, display: "flex", flexWrap: "wrap" }}>
                 <Grid size={{ xs: 12, sm: 6 }}>
                     <TextField
                         label={t("qrTypes.geo.latitude")}

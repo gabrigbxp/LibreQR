@@ -2,7 +2,7 @@ import { ChangeEvent, useEffect } from "react"
 import Box from "@mui/material/Box"
 import Divider from "@mui/material/Divider"
 import FormControlLabel from "@mui/material/FormControlLabel"
-import Grid from "@mui/material/Grid2"
+import Grid from "@mui/material/Grid"
 import Switch from "@mui/material/Switch"
 import TextField from "@mui/material/TextField"
 import Typography from "@mui/material/Typography"
@@ -128,12 +128,12 @@ const VCalendar = ({ title, description, location, startDate, endDate, allDay, o
                 <Typography variant="h6" gutterBottom>
                     {t("qrTypes.vcalendar.title")}
                 </Typography>
-                <Typography variant="body2" color="textSecondary" paragraph>
+                <Typography variant="body2" color="textSecondary" sx={{ marginBottom: 2 }}>
                     {t("qrTypes.vcalendar.description")}
                 </Typography>
                 <Divider sx={{ mb: 2 }} />
             </Grid>
-            <Box gap={2} display="flex" flexWrap="wrap">
+            <Box sx={{ gap: 2, display: "flex", flexWrap: "wrap" }}>
                 <Grid size={12}>
                     <Typography variant="subtitle1" gutterBottom>
                         {t("qrTypes.vcalendar.eventInfo")}
@@ -192,7 +192,7 @@ const VCalendar = ({ title, description, location, startDate, endDate, allDay, o
                         fullWidth
                     />
                 </Grid>
-                <Grid size={12} gap={2} display="flex" flexWrap="wrap" alignItems="flex-end">
+                <Grid size={12} sx={{ gap: 2, display: "flex", flexWrap: "wrap", alignItems: "flex-end" }}>
                     <Grid size={{ xs: 12, sm: 6 }}>
                         <Typography variant="subtitle1" gutterBottom>
                             {t("qrTypes.vcalendar.additionalInfo")}

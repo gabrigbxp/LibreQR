@@ -6,7 +6,7 @@ import Button from "@mui/material/Button"
 import Card from "@mui/material/Card"
 import Box from "@mui/material/Box"
 import Divider from "@mui/material/Divider"
-import Grid from "@mui/material/Grid2"
+import Grid from "@mui/material/Grid"
 import MenuItem from "@mui/material/MenuItem"
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
 import RestartAltIcon from "@mui/icons-material/RestartAlt"
@@ -58,8 +58,12 @@ const AdvanceSettings = () => {
                                     value={maskPattern ?? ""}
                                     onChange={(e) => {
                                         const value = e.target.value
-                                        const numValue = value === "" ? undefined : +value
-                                        if (value === "" || (!isNaN(numValue) && numValue >= 0 && numValue <= 7)) {
+                                        if (value === "") {
+                                            dispatch(setCommon({ maskPattern: undefined }))
+                                            return
+                                        }
+                                        const numValue = +value
+                                        if (!isNaN(numValue) && numValue >= 0 && numValue <= 7) {
                                             dispatch(setCommon({ maskPattern: numValue }))
                                         }
                                     }}
@@ -82,8 +86,12 @@ const AdvanceSettings = () => {
                                     value={version ?? ""}
                                     onChange={(e) => {
                                         const value = e.target.value
-                                        const numValue = value === "" ? undefined : +value
-                                        if (value === "" || (!isNaN(numValue) && numValue >= 1 && numValue <= 40)) {
+                                        if (value === "") {
+                                            dispatch(setCommon({ version: undefined }))
+                                            return
+                                        }
+                                        const numValue = +value
+                                        if (!isNaN(numValue) && numValue >= 1 && numValue <= 40) {
                                             dispatch(setCommon({ version: numValue }))
                                         }
                                     }}
@@ -106,8 +114,12 @@ const AdvanceSettings = () => {
                                     value={scale ?? ""}
                                     onChange={(e) => {
                                         const value = e.target.value
-                                        const numValue = value === "" ? undefined : +value
-                                        if (value === "" || (!isNaN(numValue) && numValue > 0)) {
+                                        if (value === "") {
+                                            dispatch(setCommon({ scale: undefined }))
+                                            return
+                                        }
+                                        const numValue = +value
+                                        if (!isNaN(numValue) && numValue > 0) {
                                             dispatch(setCommon({ scale: numValue }))
                                         }
                                     }}

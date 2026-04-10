@@ -6,7 +6,7 @@ import Card from "@mui/material/Card"
 import CardContent from "@mui/material/CardContent"
 import FormControlLabel from "@mui/material/FormControlLabel"
 import FormGroup from "@mui/material/FormGroup"
-import Grid from "@mui/material/Grid2"
+import Grid from "@mui/material/Grid"
 import IconButton from "@mui/material/IconButton"
 import Modal from "@mui/material/Modal"
 import Paper from "@mui/material/Paper"
@@ -122,7 +122,7 @@ const QRWorkspace = ({ children }: QRWorkspaceProps) => {
     const handleClickGenerateQr = () => {
         API.saveDialog("qr.png").then((file) => {
             if (!file.canceled && file.filePath) {
-                const logo = isLogoLoaded ? { content: logoContent, radius: realRadius } : undefined
+                const logo = isLogoLoaded ? { content: logoContent ?? "", radius: realRadius } : undefined
                 API.create({ text, size, logo, fileName: file.filePath, margin, moduleColor, backgroudnColor, maskPattern, version, scale, errorCorrectionLevel })
             }
         })
@@ -157,7 +157,7 @@ const QRWorkspace = ({ children }: QRWorkspaceProps) => {
                         <HelpIcon fontSize="small" />
                     </IconButton>
                     <Modal open={isCharacterLimitModalOpen} onClose={() => setIsCharacterLimitModalOpen(false)}>
-                        <Box p={2} bgcolor="background.paper" borderRadius={1} maxWidth={400} mx="auto" my="20vh" sx={{ position: "relative" }}>
+                        <Box sx={{ maxWidth: 400, mx: "auto", my: "20vh", borderRadius: 1, bgcolor: "background.paper", p: 2, position: "relative" }}>
                             <Typography variant="h6">{t("general.characterLimit")}</Typography>
                             <Typography variant="body2">{t("general.characterLimitDescription")}</Typography>
                             <IconButton onClick={() => setIsCharacterLimitModalOpen(false)} sx={{ position: "absolute", top: 0, right: 0 }}>
@@ -175,7 +175,7 @@ const QRWorkspace = ({ children }: QRWorkspaceProps) => {
             <Grid size={12}>
                 <Card>
                     <CardContent>
-                        <Box display="flex" gap={1} mb={2} alignItems="center">
+                        <Box sx={{ display: "flex", alignItems: "center", gap: 1, mb: 2 }}>
                             <SettingsIcon color="primary" />
                             <Typography variant="h6">{t("qr.basicSettings")}</Typography>
                         </Box>
@@ -331,7 +331,7 @@ const QRWorkspace = ({ children }: QRWorkspaceProps) => {
                                     />
                                     {hasLogo && isLogoLoaded && (
                                         <img
-                                            src={logoContent}
+                                            src={logoContent ?? undefined}
                                             style={{
                                                 width: imagePreviewSize / 4,
                                                 height: imagePreviewSize / 4,

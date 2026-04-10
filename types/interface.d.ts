@@ -5,7 +5,7 @@ type QRTextInfo = {
     /**
      * Full path to file
      */
-    fileName: string
+    fileName?: string
     /**
      * QR content
      */

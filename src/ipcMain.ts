@@ -6,7 +6,7 @@ import { preview } from "./qr/preview"
 ipcMain.handle("qr:generate", (_event, info: QRTextInfo) =>
     createFile(
         {
-            path: info.fileName,
+            path: info.fileName ?? "",
             text: info.text,
             options: {
                 errorCorrectionLevel: info.errorCorrectionLevel || "H",

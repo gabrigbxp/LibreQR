@@ -3,7 +3,7 @@ import Box from "@mui/material/Box"
 import FormControl from "@mui/material/FormControl"
 import FormControlLabel from "@mui/material/FormControlLabel"
 import FormGroup from "@mui/material/FormGroup"
-import Grid from "@mui/material/Grid2"
+import Grid from "@mui/material/Grid"
 import InputLabel from "@mui/material/InputLabel"
 import MenuItem from "@mui/material/MenuItem"
 import Select, { SelectChangeEvent } from "@mui/material/Select"
@@ -26,7 +26,7 @@ interface WiFiProps extends Partial<WiFiState> {
 const WiFi = ({ ssid, encryptation, password, hidden, actions }: WiFiProps) => {
     const { t } = useTranslation()
     const isEncrypted = encryptation !== "nopass"
-    const WiFiQRCode = `WIFI:T:${encryptation};S:${ssid}${encryptation ? `;P:${password.replace(/([;,:])/g, "\\$1")}` : ""}${hidden ? ";H:true" : ""};;`
+    const WiFiQRCode = `WIFI:T:${encryptation};S:${ssid}${encryptation ? `;P:${password?.replace(/([;,:])/g, "\\$1")}` : ""}${hidden ? ";H:true" : ""};;`
 
     useEffect(() => {
         actions?.setCommon({ text: WiFiQRCode, canShow: !!(ssid && (!isEncrypted || (isEncrypted && password))) })
@@ -38,7 +38,7 @@ const WiFi = ({ ssid, encryptation, password, hidden, actions }: WiFiProps) => {
 
     return (
         <QRWorkspace>
-            <Box gap={2} display="flex" flexWrap="wrap">
+            <Box style={{ gap: 2, display: "flex", flexWrap: "wrap" }}>
                 <Grid size={{ xs: 12, sm: 6 }}>
                     <TextField label={t("qrTypes.wifi.networkName")} variant="outlined" size="small" value={ssid || ""} onChange={handleChangeSSID} fullWidth />
                 </Grid>

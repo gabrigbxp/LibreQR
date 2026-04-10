@@ -9,7 +9,7 @@ import EventIcon from "@mui/icons-material/Event"
 import LinkIcon from "@mui/icons-material/Link"
 import LocationOnIcon from "@mui/icons-material/LocationOn"
 import WifiIcon from "@mui/icons-material/Wifi"
-import Grid from "@mui/material/Grid2"
+import Grid from "@mui/material/Grid"
 
 import { useDispatch, useTranslation } from "@ui/hooks"
 import { setCommon } from "@ui/store/slices/commonSlice"
@@ -62,7 +62,7 @@ const urlToViewMap: Record<string, keyof typeof views> = {
 const QRTypeSelector = () => {
     const { t } = useTranslation()
     const dispatch = useDispatch()
-    const viewsKeys = Object.keys(views)
+    const viewsKeys = Object.keys(views) as (keyof typeof views)[]
 
     const getInitialView = (): keyof typeof views => {
         const urlParams = new URLSearchParams(window.location.search)
@@ -142,7 +142,7 @@ const QRTypeSelector = () => {
                         },
                     }}
                 >
-                    {viewsKeys.map((key: keyof typeof views) => {
+                    {viewsKeys.map((key) => {
                         const view = views[key]
                         const IconComponent = view.icon
                         const isSelected = selectedView === key
@@ -204,9 +204,9 @@ const QRTypeSelector = () => {
                                     />
                                     <Typography
                                         variant="subtitle2"
-                                        fontWeight={isSelected ? 600 : 500}
                                         color={isSelected ? "primary.main" : "text.primary"}
                                         sx={{
+                                            fontWeight: isSelected ? 600 : 500,
                                             fontSize: { xs: "0.75rem", sm: "0.875rem", md: "1rem" },
                                             lineHeight: 1.1,
                                             textAlign: "center",

@@ -32,9 +32,11 @@ const ThemeToggle = () => {
 
     const getTooltipTitle = () => {
         if (mode === "system") {
-            return t("theme.tooltipSystem", { systemMode: t(`theme.${systemMode}`) })
+            const modeKey = `theme.${systemMode ?? "light"}` as Parameters<typeof t>[0]
+            return t("theme.tooltipSystem", { systemMode: t(modeKey) })
         }
-        return t("theme.tooltip", { mode: t(`theme.${mode}`) })
+        const modeKey = `theme.${mode ?? "light"}` as Parameters<typeof t>[0]
+        return t("theme.tooltip", { mode: t(modeKey) })
     }
 
     return (
