@@ -1,17 +1,18 @@
 import { toBuffer, toFile } from "qrcode"
 import type { QRCodeSegment, QRCodeToBufferOptions } from "qrcode"
-import Jimp from "jimp"
+import { Jimp } from "jimp"
+import type { JimpClass } from "@jimp/types"
 import { BorderRadius } from "types/interface"
 import { CommonState } from "@ui/store/slices/commonSlice"
 
-const roundCorners = (img: Jimp, borderRadius: BorderRadius): void => {
+const roundCorners = (img: JimpClass, borderRadius: BorderRadius): void => {
     const radius = {
         topLeft: typeof borderRadius === "number" ? borderRadius : borderRadius.topLeft,
         topRight: typeof borderRadius === "number" ? borderRadius : borderRadius.topRight,
         bottomRight: typeof borderRadius === "number" ? borderRadius : borderRadius.bottomRight,
         bottomLeft: typeof borderRadius === "number" ? borderRadius : borderRadius.bottomLeft,
     }
-    img.scanQuiet(0, 0, img.bitmap.width, img.bitmap.height, function (x: number, y: number, idx: number) {
+    img.scan(0, 0, img.bitmap.width, img.bitmap.height, function (x: number, y: number, idx: number) {
         const centerX = img.bitmap.width / 2
         const centerY = img.bitmap.height / 2
 
@@ -69,12 +70,12 @@ const createFile = ({ path, text, options, logo, margin, moduleColor, backgroudn
                     const buffer = Buffer.from(base64Data, "base64")
                     Jimp.read(buffer)
                         .then((logoBuffer) => {
-                            logoBuffer.resize(qrCode.bitmap.width / 4, Jimp.AUTO)
+                            logoBuffer.resize({ w: Math.round(qrCode.bitmap.width / 4) })
                             roundCorners(logoBuffer, logo.radius)
                             const posX = qrCode.bitmap.width / 2 - logoBuffer.bitmap.width / 2
                             const posY = qrCode.bitmap.height / 2 - logoBuffer.bitmap.height / 2
                             qrCode.composite(logoBuffer, posX, posY)
-                            qrCode.write(path)
+                            return qrCode.write(path as `${string}.${string}`)
                         })
                         .catch(onError)
                 })
